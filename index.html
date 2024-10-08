@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>人材エージェント転職フォーム</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <header class="header">
+            <div class="header-content">
+                <img src="img/HerPassロゴ_透過 .png" alt="HerPassロゴ" class="logo">
+                <div class="header-text">
+                    <p class="header-text-top">厚生労働大臣許可 13-ユ-307882</p>
+                    <p>新着・<span class="highlight-text">女性人気の求人</span>を会員限定でご紹介！</p>
+                </div>
+            </div>
+        </header>
+        
+        <!-- モーダル -->
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <h2>お気持ちはどちらに近いですか？</h2>
+                <hr class="modal-divider">
+                <button class="modal-button" onclick="selectIntent('soon')">
+                    近いうちに転職したい <span class="modal-button-arrow">▶︎</span>
+                </button>
+                <button class="modal-button" onclick="selectIntent('research')">
+                    今は情報収集したい <span class="modal-button-arrow">▶︎</span>
+                </button>
+            </div>
+        </div>
+
+       
+
+        <div class="progress-bar-container">
+            <span class="step-text">STEP</span>
+            <ul class="progress-bar">
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <div class="vertical-line"></div>
+            <span class="easy-text">簡単60秒</span>
+        </div>
+        
+
+        <!-- フォーム -->
+        <form id="multiStepForm" action="https://lp.her-pass.jp/thanks-google-2" netlify>
+        
+            <!-- STEP 1 -->
+            <div class="step active">
+                <label for="experience">経理・財務・会計士・税理士としての実務経験年数を教えてください。</label>
+                <div class="options">
+                    <!-- category='experience' を渡す -->
+                    <button type="button" class="option-button" onclick="selectOption('3年未満', 'experience')">3年未満</button>
+                    <button type="button" class="option-button" onclick="selectOption('3~5年', 'experience')">3~5年</button>
+                    <button type="button" class="option-button" onclick="selectOption('6~10年', 'experience')">6~10年</button>
+                    <button type="button" class="option-button" onclick="selectOption('11年以上', 'experience')">11年以上</button>
+                    <button type="button" class="option-button option-button1-5" onclick="selectOption('未経験', 'experience')">未経験</button>
+                </div>
+                <div class="button-container-center">
+                    <button class="next-button-1" type="button" onclick="nextStep()">
+                        <span class="next-button-1-next">次へ</span>
+                        <span class="next-button-1-mark">▶︎</span>
+                    </button>
+                </div>
+                
+            </div>
+
+            <!-- STEP 2 (転職希望時期) -->
+            <div class="step">
+                <label for="timing">転職希望時期はいつですか？</label>
+                <div class="options">
+                    <!-- category='timing' を渡す -->
+                    <button type="button" class="option-button" onclick="selectOption('すぐに', 'timing')">すぐに</button>
+                    <button type="button" class="option-button" onclick="selectOption('3ヶ月以内', 'timing')">3ヶ月以内</button>
+                    <button type="button" class="option-button" onclick="selectOption('6ヶ月以内', 'timing')">6ヶ月以内</button>
+                    <button type="button" class="option-button" onclick="selectOption('1年以内', 'timing')">1年以内</button>
+                    <button type="button" class="option-button" onclick="selectOption('まだ決まっていない', 'timing')">まだ決まっていない</button>
+                </div>
+                <div class="button-container">
+                    <button type="button" onclick="prevStep()">戻る</button>
+                    <button type="button" onclick="nextStep()">次へ</button>
+                </div>
+            </div>
+
+            <!-- STEP 3 (現在の年収) -->
+            <div class="step">
+                <label for="salary">現在の年収を教えてください</label>
+                <div class="options">
+                    <!-- category='salary' を渡す -->
+                    <button type="button" class="option-button" onclick="selectOption('300万円未満', 'salary')">300万円未満</button>
+                    <button type="button" class="option-button" onclick="selectOption('300~399万円', 'salary')">300~399万円</button>
+                    <button type="button" class="option-button" onclick="selectOption('400~499万円', 'salary')">400~499万円</button>
+                    <button type="button" class="option-button" onclick="selectOption('500~599万円', 'salary')">500~599万円</button>
+                    <button type="button" class="option-button" onclick="selectOption('600~699万円', 'salary')">600~699万円</button>
+                    <button type="button" class="option-button" onclick="selectOption('700~799万円', 'salary')">700~799万円</button>
+                    <button type="button" class="option-button" onclick="selectOption('800~999万円', 'salary')">800~999万円</button>
+                    <button type="button" class="option-button" onclick="selectOption('1000~1199万円', 'salary')">1000~1199万円</button>
+                    <button type="button" class="option-button" onclick="selectOption('1200万円以上', 'salary')">1200万円以上</button>
+                </div>
+                <div class="button-container">
+                    <button type="button" onclick="prevStep()">戻る</button>
+                    <button type="button" onclick="nextStep()">次へ</button>
+                </div>
+            </div>
+
+            <!-- STEP 4 -->
+            <div class="step">
+                <label for="age">年齢を教えてください。</label>
+                <input type="number" id="age" placeholder="例）32" min="18" required>
+                <label for="name">名前を教えてください。</label>
+                <input type="text" id="name" placeholder="例）山田花子" required>
+                <div class="button-container">
+                    <button type="button" onclick="prevStep()">戻る</button>
+                    <button type="button" onclick="nextStep()">次へ</button>
+                </div>
+            </div>
+
+            <!-- STEP 5 -->
+            <div class="step">
+                <label for="phone">電話番号を教えてください。</label>
+                <input type="tel" id="phone" placeholder="08012345678" pattern="[0-9]{11}" required>
+                <label for="email">メールアドレスを教えてください。</label>
+                <input type="email" id="email" placeholder="example.gmail.com" required>
+                <div class="button-container">
+                    <button type="button" onclick="prevStep()">戻る</button>
+                    <button type="submit">送信</button>
+                </div>
+            </div>
+        </form>
+        <div class="update">
+            <span id="update-date"></span> 最新求人更新
+        </div>
+        <!-- プライバシーマークに関する記載を追加 -->
+        <div class="privacy-mark">
+            <img src="img/img_privacy[仮] 2.png" alt="プライバシーマーク">
+            <p>
+                個人情報保護のため、「HerPass」を運営する株式会社アウローラはプライバシーマークを取得しています。（登録番号 10824500(02)）
+            </p>
+        </div>
+
+
+        <script src="script.js"></script>
+
+    </body>   
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="https://aurora.tokyo/">会社概要</a> / 
+            <a href="https://lp.her-pass.jp/service-terms">利用規約</a> / 
+            <a href="https://aurora.tokyo/profile/privacyhandle/">プライバシーポリシー</a>
+        </div>
+        <div class="footer-copyright">
+            Copyright © 2024 HerPass. All rights reserved.
+        </div>
+    </footer>
+                  
+</html>
